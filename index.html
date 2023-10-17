@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <form id="calculatriceForm" name="calculatriceForm" class="text">
+        <main class="container  text-center vertical-center ">
+            <section class="row border border-light">
+
+                <div class="col-12 my-2 ">
+                    <input id="ecran1" name="ecran1" readonly="" class=" btn btn-dark btn-lg btn-block text-right"
+                        placeholder="0"></input>
+                    <input id="ecran2" name="ecran2" readonly="" class="value2 btn btn-dark btn-lg btn-block text-right"
+                        placeholder="0"></input>
+                    <input id="ecran3" name="ecran3" class="btn btn-dark btn-lg btn-block text-right"
+                        placeholder="0"></span>
+                    <input id="ecran4" name="ecran4" class="btn btn-dark btn-lg btn-block text-right"
+                        placeholder="0"></span>
+                    <!-- document.nameForm.nameInput.classInput -->
+                    <!-- document.calculatriceForm.ecran2.value -->
+                    <!-- document.calculatriceForm.ecran3.value -->
+
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block " onclick="writeNumber('7')">7</span>
+
+                </div>
+
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block" onclick="writeNumber('8')">8</span>
+
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block" onclick="writeNumber('9')">9</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-success btn-lg btn-block" onclick="operante('-')">-</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block" onclick="writeNumber('4')">4</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block" onclick="writeNumber('5')">5</span>
+                </div>
+
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block" onclick="writeNumber('6')">6</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-success btn-lg btn-block" onclick="writeOperante('+')">+</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block" onclick="writeNumber('1')">1</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block" onclick="writeNumber('2')">2</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block" onclick="writeNumber('3')">3</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-success btn-lg btn-block" onclick="writeOperante('/')">/</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block" onclick="writeNumber('0')">0</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-secondary btn-lg btn-block" onclick="writeNumber('.')">.</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-primary btn-lg btn-block" onclick="ecrase()">C</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-success btn-lg btn-block" onclick="writeOperante('*')">*</span>
+                </div>
+                <div class="col-3 py-1">
+                    <span class="btn btn-danger btn-lg btn-block justify-content-end " onclick="calc()">=</span>
+                </div>
+
+            </section>
+        </main>
+
+        <script>
+
+            
+
+            let ecran = document.querySelector('#ecran1')
+            
+         
+
+
+
+            function writeNumber(valeur) { // on ecrit le chiffre dans le 1er ecran
+                ecran.value += valeur
+            }
+
+            function writeOperante(op) { // ecrit l'operation arithmetique sur l'ecran 2
+                let ecran2 = document.querySelector("#ecran2")
+                ecran2.value = op
+
+                ecran = document.querySelector('#ecran3') // puis change d'ecran => ecran 3
+
+            }
+
+            function calc() {
+                ecran = document.querySelector('#ecran4') // on change d'ecran 4
+
+                let chiffre1 = parseFloat(ecran1.value)
+                let chiffre2 = parseFloat(ecran3.value)
+                // console.log(ecran1.value)
+                // console.log(ecran3.value)
+                // console.log(ecran2.value)
+
+                if (ecran2.value === '+') {
+                     ecran.value = chiffre1 + chiffre2;
+
+                } else if (ecran2.value === '-') {
+                     ecran.value = chiffre1 + chiffre2;
+
+                } else if (ecran2.value === '/') {
+                     ecran.value = chiffre1 / chiffre2
+
+                } else if (ecran2.value === "*") {
+                     ecran.value = chiffre1 * chiffre2
+
+                }
+
+                if (ecran.value === "Infinity") {
+                    ecran.value = "Erreur"
+
+                }
+
+            }
+
+
+
+            function ecrase() {
+                ecran1.value = ""
+                ecran2.value = ""
+                ecran3.value = ""
+                ecran4.value = ""
+                ecran = document.querySelector('#ecran1')
+            }
+
+
+
+        </script>
+    </form>
+</body>
+
+</html>
